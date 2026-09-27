@@ -307,9 +307,3 @@ Le projet permet de mettre en pratique plusieurs notions du développement web t
 Étudiante en Génie Logiciel
 
 ---
-
-## 📄 Licence
-
-Ce projet peut être distribué sous **licence MIT** si cette licence est choisie pour le dépôt.
-
----
