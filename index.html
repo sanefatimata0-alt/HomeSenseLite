@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f5ef" id="theme-color-meta">
+    <title>HomeSense Lite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="page-loader" class="page-loader" role="status" aria-live="polite" aria-label="Chargement de HomeSense Lite">
+        <div class="loader-content">
+            <span class="loader-logo" aria-hidden="true">H</span>
+            <p>Préparation de votre espace</p>
+            <div class="loader-track" role="progressbar" aria-label="Chargement de la page" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span id="loader-progress"></span>
+            </div>
+            <span id="loader-percent" class="loader-percent">0%</span>
+        </div>
+    </div>
+    <header class="topbar">
+        <a class="brand" href="#accueil" aria-label="HomeSense Lite, accueil">
+            <span class="logo" aria-hidden="true">H</span>
+            <span>HomeSense <span class="gris">Lite</span></span>
+        </a>
+        <span class="topbar-note"><span class="pointvert" aria-hidden="true"></span> Tableau de confort intérieur</span>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Activer le mode sombre" title="Activer le mode sombre">
+            <span id="theme-icon" aria-hidden="true">☾</span>
+        </button>
+    </header>
+
+    <main class="page">
+        <section id="accueil" class="hero" aria-labelledby="page-title">
+            <div class="hero-copy">
+                <p class="slogan">LE CONFORT, MESURÉ AVEC SOIN</p>
+                <h1 id="page-title">Un intérieur qui<br><span>respire mieux.</span></h1>
+                <p class="intro-copy">Température, humidité, lumière et énergie : comprenez ce qui façonne le confort de votre maison, puis suivez son évolution.</p>
+                <a class="button-primary hero-cta" href="#analyse">Analyser mon espace <span aria-hidden="true">↘</span></a>
+                <div class="hero-notes"><span><b>04</b> indicateurs clés</span><span><b>01</b> bilan clair</span><span><b>100%</b> chez vous</span></div>
+            </div>
+            <figure class="hero-visual">
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=85" alt="Salon lumineux aux tons naturels, ouvert sur une terrasse verdoyante">
+                <figcaption><span class="visual-dot" aria-hidden="true"></span> L’équilibre commence chez soi</figcaption>
+            </figure>
+        </section>
+
+        <section id="analyse" class="analysis-section" aria-labelledby="analysis-title">
+            <div class="section-intro">
+                <div><p class="slogan">VOTRE ESPACE, EN UN COUP D’ŒIL</p><h2 id="analysis-title">Mesurer pour mieux habiter.</h2></div>
+                <p>Entrez les mesures de votre pièce pour obtenir son diagnostic et son indice de confort.</p>
+            </div>
+            <div class="report-actions"><button id="export-pdf" class="button-secondary" type="button" disabled><span aria-hidden="true">↓</span> Exporter le diagnostic en PDF</button></div>
+        <div class="report-print-area">
+        <header class="print-heading"><strong>HomeSense Lite</strong><span>Rapport de confort intérieur</span><time id="report-date"></time></header>
+        <div class="cards" aria-label="Analyse du confort intérieur">
+            <form id="formulaire" class="panel form-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="slogan">MESURES DE LA PIÈCE</p>
+                        <h2>Paramètres</h2>
+                    </div>
+                    <span class="nbr-mesures"><span id="mesures-completees">00</span> <span>/ 04 mesures</span></span>
+                </div>
+
+                <div class="fields-grid">
+                    <div class="field">
+                        <label for="temp">Température</label>
+                        <div class="input-wrap"><input type="number" id="temp" name="temp" min="-20" max="60" step="0.1" placeholder="22" required><span>°C</span></div>
+                        <small>Confort conseillé : 18 à 26 °C</small>
+                    </div>
+                    <div class="field">
+                        <label for="hum">Humidité</label>
+                        <div class="input-wrap"><input type="number" id="hum" name="hum" min="0" max="100" step="1" placeholder="50" required><span>%</span></div>
+                        <small>Une humidité modérée est préférable</small>
+                    </div>
+                    <div class="field">
+                        <label for="lum">Luminosité</label>
+                        <div class="input-wrap"><input type="number" id="lum" name="lum" min="0" max="100000" step="1" placeholder="350" required><span>lux</span></div>
+                        <small>Repère de luminosité : 200 lux</small>
+                    </div>
+                    <div class="field">
+                        <label for="conso">Consommation</label>
+                        <div class="input-wrap"><input type="number" id="conso" name="conso" min="0" max="100000" step="1" placeholder="320" required><span>W</span></div>
+                        <small>Surveillez les pics au-dessus de 500 W</small>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button id="analyser" class="button-primary" type="submit"><span aria-hidden="true">↗</span> Analyser ma pièce</button>
+                    <button id="exemple" class="button-secondary" type="button">Essayer un exemple</button>
+                </div>
+                <p class="form-footer">Les résultats sont indicatifs et basés sur les mesures saisies.</p>
+            </form>
+
+            <section id="resultat" class="panel result-panel" aria-labelledby="result-title" aria-live="polite">
+                <div class="panel-heading result-heading">
+                    <div>
+                        <p class="slogan">VOTRE BILAN</p>
+                        <h2 id="result-title">Diagnostic</h2>
+                    </div>
+                    <span id="score" class="score-badge"><span id="score-value">--</span><small>/ 4</small></span>
+                </div>
+                <p id="resume" class="result-summary">Complétez les quatre mesures pour découvrir le bilan de votre pièce.</p>
+                <div class="score-color" aria-hidden="true"><span id="score-space"></span></div>
+                <dl id="report-values" class="report-values" aria-label="Mesures analysées">
+                    <div><dt>Température</dt><dd id="report-temp">—</dd></div>
+                    <div><dt>Humidité</dt><dd id="report-hum">—</dd></div>
+                    <div><dt>Luminosité</dt><dd id="report-lum">—</dd></div>
+                    <div><dt>Consommation</dt><dd id="report-conso">—</dd></div>
+                </dl>
+                <ul id="message" class="results-list">
+                    <li class="temporaire">Votre analyse apparaîtra ici, avec une piste concrète pour améliorer votre confort.</li>
+                </ul>
+                <div class="result-footer"><span class="footer-mark" aria-hidden="true">✳</span><span>De petits ajustements peuvent faire une vraie différence.</span></div>
+            </section>
+        </div>
+        <section id="historique" class="history-section panel" aria-labelledby="history-title">
+            <div class="history-heading">
+                <div><p class="slogan">VOTRE DERNIER DIAGNOSTIC</p><h2 id="history-title">Le confort de votre pièce.</h2><p>Un indice de 0 à 100 pour chacune des quatre mesures.</p></div>
+                <span class="history-range">4 indicateurs</span>
+            </div>
+            <div class="chart-wrap"><canvas id="history-chart" role="img" aria-label="Histogramme des quatre indices de confort de la dernière analyse"></canvas></div>
+            <p id="history-empty" class="history-empty">Lancez une analyse pour afficher les quatre indices de confort.</p>
+            <p id="chart-fallback" class="chart-fallback" hidden>Le graphique nécessite une connexion pour charger Chart.js.</p>
+        </section>
+        </div>
+        </section>
+
+        <footer class="page-footer">
+            <span>HOMESENSE LITE</span>
+            <span>Une maison agréable commence par un bon équilibre.</span>
+        </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
